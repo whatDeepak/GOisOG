@@ -25,16 +25,13 @@ func printCommandEvents(analyticsChannel <-chan *slacker.CommandEvent) {
 
 func init() {
 	err := godotenv.Load(".env")
-	if err!=nil {
-		fmt.Printf("Error loading env file", err)
+	if err != nil {
+		fmt.Printf("Error loading env file: %v", err)
 	}
 	log.Println("Env loaded successfully")
 }
 
 func main() {
-	os.Setenv("SLACK_BOT_TOKEN", os.Getenv("SLACK_BOT_TOKEN"))
-	os.Setenv("SLACK_APP_TOKEN", os.Getenv("SLACK_APP_TOKEN"))
-
 	bot := slacker.NewClient(os.Getenv("SLACK_BOT_TOKEN"), os.Getenv("SLACK_APP_TOKEN"))
 
 	go printCommandEvents(bot.CommandEvents())
