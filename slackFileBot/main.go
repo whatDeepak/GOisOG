@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"log"
+	"os"
 
 	"github.com/joho/godotenv"
 	"github.com/slack-go/slack"
