@@ -1,0 +1,12 @@
+aws lambda create-function --function-name awsLambdaGoLang \
+--zip-file fileb://function.zip --handler main --runtime go1.x \
+--role arn:aws:iam::AccountID:role/lambda-ex
+
+aws lambda invoke --function-name awsLambdaGoLang --cli-binary-format raw-in-base64-out --payload '{"What is your name?": "Jim", "How old are you?": 33}' output.txt
+
+
+aws lambda create-function --function-name awsLambdaGoLang \
+--runtime provided.al2023 --handler bootstrap \
+--architectures arm64 \
+--role arn:aws:iam::AccountID:role/lambda-ex \
+--zip-file fileb://function.zip
